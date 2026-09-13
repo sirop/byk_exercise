@@ -19,3 +19,7 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+
+# ---- removed from the repo, kept locally ----
+Oscillator/dj30_cmo_mcclellan_analysis.de.md
+config.properties.example

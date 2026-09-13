@@ -9,8 +9,7 @@ analysis backed by the scripts that produced its numbers.
 
 [`dj30_cmo_mcclellan_analysis.md`](Oscillator/dj30_cmo_mcclellan_analysis.md) is the
 deliverable: a ~90 KB write-up answering whether the Chande Momentum Oscillator and the
-McClellan Oscillator give a defensible signal on the Dow Jones 30. A German translation
-is in `dj30_cmo_mcclellan_analysis.de.md`.
+McClellan Oscillator give a defensible signal on the Dow Jones 30.
 
 Headline: on the 10-year window neither indicator survives a correct treatment of the
 autocorrelation induced by overlapping return windows. Extended to 34 years of history
@@ -65,6 +64,5 @@ Market data is pulled from Yahoo Finance at run time. Two caveats:
 ## Credentials
 
 No credentials are committed. `Oscillator/API_KEYS`, `config.properties` and
-`.vscode/mcp.json` are gitignored. Copy `config.properties.example` and fill in your own
-keys if you need the eToro dashboard configuration; export `TIINGO_TOKEN` for the data
-pipeline.
+`.vscode/mcp.json` are gitignored. Export `TIINGO_TOKEN` for the data pipeline; see
+`dj30_pipeline.py` for how it is read.
