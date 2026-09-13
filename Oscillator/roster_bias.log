@@ -1,0 +1,33 @@
+=== baseline: true point-in-time roster, 30 names ===
+min p 0.5461   median p 0.8128
+
+=== A. roster missing k of 30 names (200 draws each) ===
+  k   med|dp|   p90|dp|   max|dp| min p seen   #sig@5%
+  1    0.0635    0.1921    0.4301    0.2686         0
+  2    0.0746    0.2310    0.6224    0.1267         0
+  3    0.0913    0.2526    0.6139    0.1006         0
+  4    0.0939    0.2588    0.7474    0.0336         1
+  6    0.1176    0.2978    0.7378    0.0533         0
+
+=== B. survivorship bias: end-of-sample roster held fixed backwards ===
+This is the construction you are forced into with no membership history at all.
+end-of-sample roster: 30 names; member-days 75420 (true roster: 75420)
+member-days where the two rosters disagree: 22882 of 75420 (30.34%)
+
+signal       h      p(true)   p(surv)    |diff|
+zero-cross   5       0.6507    0.8206    0.1699
+zero-cross   10      0.5461    0.9688    0.4227
+zero-cross   20      0.9447    0.4006    0.5440
+oversold     5       0.7832    0.7540    0.0292
+oversold     10      0.5817    0.5128    0.0689
+oversold     20      0.8464    0.9095    0.0630
+overbought   5       0.9110    0.7959    0.1151
+overbought   10      0.8128    0.7280    0.0848
+overbought   20      0.9853    0.7666    0.2188
+max |dp| from survivorship bias = 0.5440
+min p under survivorship bias = 0.4006 (true: 0.5461)
+
+=== what this means for extending McClellan before 2016 ===
+Largest p-displacement from dropping up to 6 of 30 names: 0.7474
+Smallest p ever produced by a mutilated roster:            0.0336
+Significant cells produced across all 9000 dropout draws:     1

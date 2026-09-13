@@ -1,0 +1,90 @@
+trading days 8735  1992-01-02 .. 2026-09-11
+roster is 30 on every day: True
+priceable members per day: min 21  median 29  max 30
+member-days total 262050, priceable 241240, MISSING 20810 (7.94%)
+
+coverage by era (mean priceable members of 30):
+  1992-2000 bull             22.44 of 30   (min 21, days at 30: 0.0%)
+  2000-2010 sideways/bear    28.08 of 30   (min 27, days at 30: 0.0%)
+  2010-2016 bull             29.59 of 30   (min 29, days at 30: 59.2%)
+  2016-2026 bull             30.00 of 30   (min 30, days at 30: 100.0%)
+  full history 1992-2026     27.62 of 30   (min 21, days at 30: 40.2%)
+
+names never priceable: BS_OLD, EK_OLD, GM_OLD, KFT_OLD, S_OLD, TX_OLD, T_CORP, UK_OLD, WX_OLD, Z_OLD
+former members recovered: AA, MO, GT, IP, HPQ, AIG, BAC, C, T
+
+oscillator range, point-in-time roster: -5.65 .. 5.07 (std 1.33)
+
+=== 1992-2000 bull ===
+signal       h    n_sig  n_epi   effect%    p_hac    p_clu p_nov_med   p_boot
+zero-cross   5      168    336     -0.08   0.6298   0.6851     0.457   0.6197
+zero-cross   10     166    333     +0.06   0.7658   0.8198     0.703   0.7630
+zero-cross   20     164    329     +0.18   0.4805   0.6486     0.521   0.4830
+oversold     5      181    163     +0.53   0.0099   0.0102     0.120   0.0087
+oversold     10     181    163     +0.61   0.0249   0.0621     0.327   0.0233
+oversold     20     181    163     +0.62   0.2041   0.2858     0.492   0.2023
+overbought   5      184    153     -0.24   0.1648   0.1969     0.177   0.1520
+overbought   10     184    153     -0.04   0.8946   0.9037     0.483   0.8850
+overbought   20     183    151     -0.44   0.4156   0.4492     0.572   0.4020
+
+=== 2000-2010 sideways/bear ===
+signal       h    n_sig  n_epi   effect%    p_hac    p_clu p_nov_med   p_boot
+zero-cross   5      241    483     -0.34   0.0420   0.0823     0.372   0.0493
+zero-cross   10     240    481     -0.29   0.2105   0.3533     0.481   0.2137
+zero-cross   20     239    479     -0.57   0.1784   0.2330     0.598   0.1697
+oversold     5      169    199     +0.75   0.0263   0.0507     0.396   0.0367
+oversold     10     169    199     +0.81   0.0742   0.1318     0.577   0.0817
+oversold     20     169    199     +1.62   0.0020   0.0138     0.359   0.0017
+overbought   5      133    137     +0.33   0.2157   0.2935     0.387   0.2210
+overbought   10     133    137     +0.71   0.0763   0.1171     0.178   0.0773
+overbought   20     133    137     +1.02   0.1139   0.1538     0.391   0.1150
+
+=== 2010-2016 bull ===
+signal       h    n_sig  n_epi   effect%    p_hac    p_clu p_nov_med   p_boot
+zero-cross   5      153    307     -0.27   0.0777   0.1459     0.240   0.0713
+zero-cross   10     153    307     -0.18   0.3491   0.4735     0.644   0.3557
+zero-cross   20     153    306     -0.24   0.3999   0.5515     0.435   0.3777
+oversold     5       82     81     +0.53   0.3439   0.3815     0.490   0.3327
+oversold     10      82     81     +0.42   0.4953   0.5469     0.552   0.4993
+oversold     20      82     81     +1.36   0.0361   0.0710     0.329   0.0383
+overbought   5      103     91     -0.06   0.8131   0.8234     0.903   0.8157
+overbought   10     103     91     +0.20   0.5603   0.5893     0.853   0.5567
+overbought   20     103     91     -0.31   0.6141   0.6417     0.443   0.6003
+
+=== 2016-2026 bull ===
+signal       h    n_sig  n_epi   effect%    p_hac    p_clu p_nov_med   p_boot
+zero-cross   5      239    479     -0.08   0.6076   0.6550     0.745   0.5997
+zero-cross   10     239    479     +0.10   0.6458   0.7117     0.661   0.6433
+zero-cross   20     237    475     -0.07   0.8003   0.8507     0.583   0.8067
+oversold     5      144    119     -0.07   0.8926   0.8817     0.711   0.8947
+oversold     10     144    119     -0.49   0.6377   0.6131     0.722   0.6567
+oversold     20     144    119     +0.35   0.7734   0.7876     0.526   0.7750
+overbought   5      150    123     +0.07   0.7504   0.7413     0.728   0.7457
+overbought   10     150    123     +0.18   0.6417   0.6384     0.603   0.6273
+overbought   20     150    123     +0.03   0.9633   0.9603     0.541   0.9660
+
+=== full history 1992-2026 ===
+signal       h    n_sig  n_epi   effect%    p_hac    p_clu p_nov_med   p_boot
+zero-cross   5      803   1607     -0.20   0.0148   0.0372     0.393   0.0153
+zero-cross   10     803   1607     -0.09   0.4329   0.5447     0.533   0.4377
+zero-cross   20     801   1603     -0.21   0.2215   0.3226     0.517   0.2190
+oversold     5      651    643     +0.46   0.0122   0.0172     0.061   0.0110
+oversold     10     650    641     +0.39   0.2069   0.2173     0.403   0.1987
+oversold     20     650    641     +0.99   0.0046   0.0151     0.335   0.0060
+overbought   5      611    517     +0.03   0.7633   0.7876     0.538   0.7537
+overbought   10     611    517     +0.19   0.3075   0.3452     0.446   0.3137
+overbought   20     611    517     +0.16   0.6007   0.6252     0.565   0.6010
+
+=== verdict across all 45 rows ===
+min p_hac     0.0020  ({'regime': '2000-2010 sideways/bear', 'signal': 'oversold', 'h': 20})
+min p_clu     0.0102
+min p_nov_med 0.0611
+min p_boot    0.0017
+rows p_hac < 0.05: 9 of 45
+rows clearing BOTH p_hac and p_nov_med < 0.05: 0
+largest |effect| 1.62%
+
+=== point-in-time vs the section 6.6 fixed survivor basket ===
+member-days where the two rosters disagree: 104376 of 241240 (43.27%)
+oscillator correlation (point-in-time vs fixed basket): 0.973804
+sign agreement: 92.41%

@@ -1,0 +1,18 @@
+McClellan oversold threshold (held-out first half): -2.0816
+days 8615   McClellan signal 602 (6.99%)   CMO signal 741 (8.60%)
+days where BOTH fire: 224  -> 37.2% of McClellan days, 30.2% of CMO days
+phi correlation of the two indicators: 0.2797
+
+--- separate regressions ---
+mcc_sig  alone: coef +0.0099  t +2.58  p 0.0100
+cmo_sig  alone: coef +0.0154  t +3.30  p 0.0010
+
+--- joint regression: both in at once ---
+mcc_sig  joint: coef +0.0056  t +1.42  p 0.1556
+cmo_sig  joint: coef +0.0140  t +2.93  p 0.0034
+
+--- conditional means (20d forward excess) ---
+neither fires (baseline)      : +0.584%  n=7496
+McClellan only                : +1.020%  n=378  (vs baseline +0.436%)
+CMO only                      : +1.889%  n=517  (vs baseline +1.305%)
+both                          : +2.741%  n=224  (vs baseline +2.157%)

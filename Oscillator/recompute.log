@@ -1,0 +1,76 @@
+total member-days: 75420  (30 x 2514 = 75420)
+
+=== issues (names with a non-zero move) ===
+0        1
+26       1
+27       1
+28      13
+29     263
+30    2235
+issues == 30 on 88.90% of days; mean 29.870
+
+corr(classic, ratio) = 0.999918
+std ratio = 3.3431   vs 100/30 = 3.3333   vs 100/mean(issues) = 3.3478
+same sign on 99.92% of days
+
+=== member-days with |return| > 15%: 50 on 29 distinct dates (of 75420 member-days) ===
+      date ticker       ret
+2024-08-02   INTC -0.260585
+2026-07-14    IBM -0.252076
+2020-03-25     BA  0.243186
+2020-03-16     BA -0.238484
+2024-07-26    MMM  0.229906
+2020-03-24    CVX  0.227407
+2026-08-27    CRM  0.225805
+2025-04-17    UNH -0.223797
+2020-03-18    CVX -0.221248
+2020-03-24    AXP  0.218823
+2020-03-09    DOW -0.216577
+2020-11-09    AXP  0.213879
+WBA among them: 0
+
+=== sensitivity ===
+corr(A, B retroactive)   = 0.9763
+corr(A, C no-RTX-print)  = 0.999999
+min p   A 0.5461   B 0.4006   C 0.5461
+max |p(A)-p(B)| = 0.5440
+max |p(A)-p(C)| = 0.1112800
+argmin signal under A: ('zero-cross', 10)
+argmin signal under B: ('zero-cross', 20)
+
+=== McClellan + COMBO rows (v3) ===
+rows: 24
+  min p_hac      = 0.5051
+  min p_clu      = 0.4263
+  min p_nov_med  = 0.4650
+  min p_boot     = 0.4940
+  max |t_hac|      = 0.6665
+  min p_nov_min    = 0.0169
+
+zero-cross h=20: n_sig 232  n_epi 465  effect -0.0195%  p_hac 0.9447  p_nov min 0.0169 med 0.6538 max 0.9699  offsets 20
+
+classic vs ratio rows identical to 1e-9: False
+  McClellan-classic zero-cross up                h=5   identical=True
+  McClellan-classic zero-cross up                h=10  identical=True
+  McClellan-classic zero-cross up                h=20  identical=True
+  McClellan-classic < -2.40 (oversold)           h=5   identical=True
+  McClellan-classic < -2.40 (oversold)           h=10  identical=True
+  McClellan-classic < -2.40 (oversold)           h=20  identical=True
+  McClellan-classic > 2.03 (overbought)          h=5   identical=False
+  McClellan-classic > 2.03 (overbought)          h=10  identical=False
+  McClellan-classic > 2.03 (overbought)          h=20  identical=False
+
+=== v2 (29-name, WBA missing) vs v3 (30-name) ===
+rows matched: 12 of 30
+max |delta p_hac| = 0.1644 on McClellan-classic zero-cross up
+CMO rows max |delta p_hac| = 0.00e+00 (expected 0: CMO uses ^DJI only)
+McClellan rows max |delta p_hac| = 0.1644, median 0.0794
+
+per-row p_hac, McClellan only:
+                         signal  h  p_hac_v2  p_hac_v3       dp
+McClellan-classic zero-cross up  5  0.486267  0.650693 0.164426
+McClellan-classic zero-cross up 10  0.466665  0.546082 0.079417
+McClellan-classic zero-cross up 20  0.971272  0.944659 0.026613
+  McClellan-ratio zero-cross up  5  0.486267  0.650693 0.164426
+  McClellan-ratio zero-cross up 10  0.466665  0.546082 0.079417
+  McClellan-ratio zero-cross up 20  0.971272  0.944659 0.026613

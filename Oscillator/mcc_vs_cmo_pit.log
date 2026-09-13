@@ -1,0 +1,21 @@
+McClellan oversold threshold (held-out first half): -1.9175
+days 8615   McClellan 659 (7.65%)   CMO 741 (8.60%)
+both fire: 250  (37.9% of McClellan days, 33.7% of CMO days)   phi 0.3011
+
+--- separate ---
+mcc_sig  alone: coef +0.0097  t +2.79  p 0.0052
+cmo_sig  alone: coef +0.0154  t +3.30  p 0.0010
+
+--- joint ---
+mcc_sig  joint: coef +0.0053  t +1.42  p 0.1552
+cmo_sig  joint: coef +0.0139  t +2.83  p 0.0046
+
+--- conditional means, 20d forward ---
+neither (baseline)    : +0.573%  n=7465
+McClellan only        : +1.192%  n=409  (vs baseline +0.619%)
+CMO only              : +2.037%  n=491  (vs baseline +1.464%)
+both                  : +2.363%  n=250  (vs baseline +1.790%)
+
+--- 2000-2010 bear window only ---
+mcc_sig  joint: coef +0.0078  t +1.47  p 0.1419
+cmo_sig  joint: coef +0.0185  t +1.90  p 0.0573

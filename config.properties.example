@@ -1,0 +1,20 @@
+# eToro Portfolio Dashboard – Configuration
+# Copy this file next to etoro-dashboard.jar and fill in your keys.
+
+# Your Public API Key (from eToro Settings > Trading > API Key Management)
+etoro.api.key=
+
+# Your User Key (generated alongside the Public Key)
+etoro.user.key=
+
+# Your eToro username (displayed in the dashboard header)
+etoro.username=
+
+# Environment: "real" or "demo"
+etoro.environment=demo
+
+# How often to refresh the dashboard, in seconds (minimum ~5 to stay within rate limits)
+etoro.refresh.seconds=60
+
+# Logging Level
+logging.level.com.etoro.dashboard=DEBUG

@@ -1,0 +1,56 @@
+=== 1. single-vendor replication ===
+Yahoo+Tiingo frame: (2514, 39)   Tiingo-only frame: (2514, 39)
+member-days covered: mixed 75420   Tiingo-only 75420   (30 x 2514 = 75420)
+
+corr(mixed-vendor, Tiingo-only) = 0.999949
+identical sign on 99.96% of days
+member-days where sign(diff) disagrees between vendors: 27 of 75420 (0.036%)
+most-disagreeing tickers: {'DD': 22, 'GS': 2, 'CVX': 1, 'MRK': 1, 'RTX': 1}
+
+signal       h     p(mixed) p(Tiingo)    |diff|
+zero-cross   5       0.6507    0.6316    0.0191
+zero-cross   10      0.5461    0.5425    0.0035
+zero-cross   20      0.9447    0.9577    0.0130
+oversold     5       0.7832    0.7832    0.0000
+oversold     10      0.5817    0.5817    0.0000
+oversold     20      0.8464    0.8464    0.0000
+overbought   5       0.9110    0.9110    0.0000
+overbought   10      0.8128    0.8128    0.0000
+overbought   20      0.9853    0.9853    0.0000
+max |p difference| between vendors = 0.0191
+min p, mixed 0.5461   Tiingo-only 0.5425
+conclusion: both vendors -> null; the splice is not driving anything.
+
+=== 2. price-weighted breadth (DJIA is price-weighted) ===
+The DJIA weights each name by price; standard McClellan counts each name once.
+equal-weighted: std 1.3901    price-weighted: std 212.39 (different units)
+corr(equal-weighted, price-weighted) = 0.920261
+identical sign on 92.54% of days
+
+signal       h     p(equal) p(price-w)
+zero-cross   5       0.6507    0.7437
+zero-cross   10      0.5461    0.6097
+zero-cross   20      0.9447    0.3629
+oversold     5       0.7832    0.2486
+oversold     10      0.5817    0.6584
+oversold     20      0.8464    0.3146
+overbought   5       0.9110    0.6210
+overbought   10      0.8128    0.7978
+overbought   20      0.9853    0.4764
+min p under price-weighting = 0.2486
+max |t| under price-weighting = 1.1537
+conclusion: price-weighting changes the units, not the verdict.
+
+=== 3. in-sample threshold fragility: sweep instead of fixing ===
+pctile   os_thr   ob_thr |   os h=5  os h=10  os h=20 |   ob h=5  ob h=10  ob h=20
+   2.0%   -3.043    2.507 |    0.272    0.705    0.829 |    0.551    0.692    0.836
+   3.0%   -2.729    2.343 |    0.815    0.504    0.786 |    0.841    0.963    0.900
+   5.0%   -2.432    2.023 |    0.783    0.582    0.846 |    0.911    0.813    0.985
+   7.5%   -2.047    1.840 |    0.399    0.816    0.400 |    0.929    0.817    0.939
+  10.0%   -1.754    1.683 |    0.151    0.549    0.157 |    0.876    0.898    0.865
+  15.0%   -1.370    1.391 |    0.658    0.632    0.204 |    0.906    0.875    0.579
+  20.0%   -1.064    1.182 |    0.892    0.752    0.276 |    0.668    0.862    0.573
+
+across 63 (threshold x signal x horizon) combinations: min p 0.1509, median 0.7048
+combinations significant at 5%: 0
+conclusion: no threshold choice in this range produces a result.

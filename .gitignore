@@ -1,0 +1,21 @@
+# ---- credentials: never commit ----
+Oscillator/API_KEYS
+config.properties
+.vscode/mcp.json
+
+# ---- cached vendor price data (licensed; reproducible by the scripts) ----
+Oscillator/*.pkl
+Oscillator/tiingo_all.json
+Oscillator/wba_fmp.json
+Oscillator/wba_tiingo.json
+Oscillator/aa_stooq.csv
+
+# ---- bulky derived intermediates ----
+jnug-labu-decay-regime-plan/analysis-output/historical_short_events.csv
+jnug-labu-decay-regime-plan/analysis-output/rolling_volatility_drag.csv
+
+# ---- python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
