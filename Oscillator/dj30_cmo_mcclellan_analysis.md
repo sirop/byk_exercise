@@ -2,7 +2,47 @@
 
 **Context:** ... whether the Chande Momentum Oscillator (CMO) and the McClellan Oscillator work on the Dow Jones 30.
 
-**Headline finding:** On the 10-year DJ30 window this question concerns, neither indicator gives a statistically defensible signal. But the CMO verdict has been **revised on longer history** — see §6.4. Within the 10-year sample the CMO does not survive a correct treatment of the autocorrelation induced by overlapping return windows (Newey-West HAC, and more decisively the episode-clustered, non-overlapping and block-bootstrap checks that follow): `CMO < −30` at 20 days gives p = 0.070 HAC and a median of 0.38 across non-overlapping phase offsets. Extending the *same* unfitted ±30 thresholds to the full **34 years** of available `^DJI` history (1992–2026, 8,735 days) turns that into a consistent effect — +1.54% excess over 20 days, p = 0.001 HAC / 0.002 clustered / 0.001 bootstrap, positive in all five regimes and all seven five-year sub-periods, and *larger* when the GFC, COVID and dot-com crashes are excluded. The 10-year sample was underpowered, not empty. Two qualifications keep this short of a trading claim: the most conservative test still does not clear 5% (non-overlapping median 0.105), and a joint regression shows roughly a third of the edge is shared with a plain "the market has fallen" filter. The McClellan Oscillator shows nothing at any horizon in either construction once the universe is specified point-in-time on split/dividend-adjusted prices over a **complete 30-name universe on all 2,514 days** — every p-value is ≥ 0.42 and the largest |t| is 0.67. Separately: **the eToro search found nothing** — in the ~130 posts actually scanned (100 from the DJ30 feed plus 30 from the one author who mentioned breadth) there were zero CMO mentions and one passing McClellan reference with no rule attached. That is a bounded sample, not a platform-wide census, so it shows no prior art *was found*, not that none exists. Of the four implementations found off-platform (three TradingView scripts, MarketInOut), none withstands a code review.
+**Headline finding, in four sentences.** On the 10-year DJ30 window the question
+concerns, neither indicator clears a correct treatment of overlapping-window
+autocorrelation. On 34 years the **CMO verdict reverses**: the same unfitted ±30
+thresholds give a consistent +1.54% excess over 20 days, so the 10-year sample was
+underpowered rather than empty. The **McClellan Oscillator stays null** everywhere it was
+tested — three breadth constructions, two vendors, five regimes, 34 years. Neither result
+is a trading claim, for reasons given below.
+
+| | CMO | McClellan |
+|---|---|---|
+| 10-year verdict | No defensible signal: `CMO < −30` at 20 days is p = 0.070 HAC, **0.38** median across non-overlapping phase offsets | Null: every p-value ≥ 0.42, largest \|t\| 0.67, on a complete 30-name universe on all 2,514 days |
+| 34-year verdict | **Revised to a real effect** (§6.4): +1.54% over 20 days, p = 0.001 HAC / 0.002 clustered / 0.001 bootstrap, positive in all five regimes and all seven five-year sub-periods, and *larger* with the GFC, COVID and dot-com crashes excluded | **Still null** (§6.6, §6.7): 45 rows across five regimes, 0 clear both HAC and the non-overlapping test, and the one candidate is subsumed by the CMO jointly (p 0.155 vs 0.0046) |
+| What stops it being a trading claim | The most conservative test still misses 5% (non-overlapping median 0.105), and a joint regression shows roughly a third of the edge is shared with a plain "the market has fallen" filter | Structural, not just statistical: the oscillator's range is ±5, not the ±70 the standard thresholds assume (§2.2) |
+
+**Prior art found nothing worth copying.** The eToro search came back empty — in the ~130
+posts that could be scanned, zero CMO mentions and one passing McClellan value with no
+rule attached. That is a bounded sample, not a platform census, so it shows no prior art
+*was found*, not that none exists (§7.1). Of the four implementations found off-platform
+(three TradingView scripts, MarketInOut), none withstands a code review (§7.2–7.3).
+
+**How to read this.** §8 is the answer; §6.4 and §6.7 are the two results that changed
+the verdict; §5 is the methodological correction everything else rests on. §1–§3 are the
+data and construction, auditable but skippable. §4 is deliberately retained *invalid*
+analysis, kept to show what the correction in §5 changes.
+
+<details>
+<summary><strong>Contents</strong></summary>
+
+- [§0 Revision note — what changed, and what is still open](#0-revision-note--what-changed-and-what-is-still-open)
+- [§1 Data](#1-data) — [1.1 Download](#11-download) · [1.1a Closing the `WBA` gap](#11a-closing-the-wba-gap-and-why-a-spliced-series-needs-validating) · [1.2 Point-in-time membership](#12-point-in-time-membership)
+- [§2 Indicator calculation](#2-indicator-calculation) — [2.1 CMO](#21-chande-momentum-oscillator-cmo-window--20-on-the-dj30-index-itself) · [2.2 McClellan across constituents](#22-mcclellan-oscillator-across-the-constituents)
+- [§3 Assembling the frame and the forward returns](#3-assembling-the-frame-and-the-forward-returns)
+- [§4 Naive backtest — **methodologically invalid**, kept deliberately](#4-backtest-naive-test--methodologically-invalid-see-5)
+- [§5 The critical correction: window overlap](#5-the-critical-correction-window-overlap) — HAC, episode clustering, non-overlapping sampling, block bootstrap
+- [§6 Results](#6-results) — [6.1 CMO](#61-cmo--valid-conclusion-stands) · [6.2 McClellan](#62-mcclellan--recomputed-unambiguous-null) · [6.3 Did the fixes matter](#63-did-the-membership-and-adjustment-fixes-actually-matter) · **[6.4 Regime dependence and the CMO revision](#64-regime-dependence--and-a-revision-to-the-cmo-verdict)** · [6.5 Vendor, weighting, threshold robustness](#65-vendor-weighting-and-threshold-robustness) · [6.6 Pre-2016, bias-bounded](#66-extending-the-mcclellan-test-before-2016-without-the-missing-roster) · **[6.7 Pre-2016 roster rebuilt](#67-the-pre-2016-roster-rebuilt--no-purchase-required)** · [6.8 Context for hit-rate figures](#68-context-for-all-hit-rate-figures)
+- [§7 Prior art](#7-prior-art--what-a-search-finds-and-whether-it-works-there)
+- [**§8 Overall conclusion**](#8-overall-conclusion)
+- [§9 Open points](#9-open-points)
+- [Appendix: limitations register](#appendix-limitations-register)
+
+</details>
 
 **Status:** all numbers below are from an executed run (sample 2016-09-12 → 2026-09-11, 2,514 trading days, `^DJI` 18,325 → 52,573). The breadth universe is complete: 30 members with a
 price on every one of the 2,514 days, 75,420 member-days, no gaps. Breadth has since
@@ -568,6 +608,17 @@ property that matters here.
 
 ## 6. Results
 
+**Which of these subsections carry the verdict.** §6 accreted across revisions, so it is
+not ordered by importance. For a reader who wants the findings only:
+
+| Read | Subsection | Why |
+|---|---|---|
+| **Yes** | **6.4** Regime dependence | Where the CMO verdict is revised on 34 years. The single most consequential result |
+| **Yes** | **6.7** Pre-2016 roster rebuilt | The final McClellan test, on the correct point-in-time roster |
+| Yes | 6.1, 6.2 | The 10-year verdicts for each indicator |
+| Optional | 6.3, 6.5, 6.8 | Robustness and framing: did the fixes matter, vendor/weighting/threshold sweeps, the bull-market caveat on raw hit rates |
+| **Superseded** | 6.6 Pre-2016, bias-bounded | Kept as an audit trail, not as a result. It assumed the pre-2016 roster was unobtainable; §6.7 shows it was not. Its conclusion survived the correction unchanged, which is itself the point — but a reader short of time should skip to 6.7 |
+
 ### 6.1 CMO — valid, conclusion stands
 
 These rows run on `^DJI` alone and are unaffected by the data defects in §0. `n` is the **number of signal days**, not the regression sample size (the OLS runs on the full sample with a dummy).
@@ -1107,7 +1158,7 @@ the same ten event dates the primary sources confirm.
 
 ---
 
-### Context for all hit-rate figures
+### 6.8 Context for all hit-rate figures
 
 The 10-year window is almost entirely a bull market (DJ30 = 18,325 on 2016-09-12 → 52,573 on 2026-09-11, +187%; v1 stated ≈17,000 for the start, which is too low). A baseline hit rate of 60–67% for "price rises over the next X days" is pure drift, not alpha. The regressions above compare signal against non-signal within the same sample and so already net out drift; the caveat applies to raw hit rates only.
 
@@ -1203,6 +1254,11 @@ QuantifiedStrategies.com has already tested CMO mean reversion; per a search-res
 ---
 
 ## 8. Overall conclusion
+
+**The standing verdict, before the detail:** the CMO is a real, well-parameterised index
+mean-reversion detector on long history and *not* a trading system; the McClellan
+Oscillator does not work on a 30-name index and is structurally unsuited to one. Points 1
+and 2 must be read together — point 1 alone is the superseded reading.
 
 1. **Statistically (CMO), on the 10-year DJ30 sample:** no robust signal. Three of six rows look significant naively, including one at p = 1.5 × 10⁻⁶; none survives. The strongest remnant (CMO < −30, 20 days) is p = 0.070 HAC, 0.078 clustered, 0.081 bootstrap, and 0.38 on the median non-overlapping sample — the last being the only figure computed on non-overlapping data, and it is nowhere near significance.
 2. **Statistically (CMO), on 34 years — this revises how point 1 should be read.** The same signal, the same unfitted ±30 thresholds, run on `^DJI` back to 1992 (§6.4): +1.54% excess over 20 days, p = 0.001 HAC / 0.002 clustered / 0.001 bootstrap, positive in all five regimes and all seven five-year sub-periods, median ≈ mean, trimmed means flat, and *stronger* with every major crash removed. The 10-year result is therefore a power problem, not an absence — which supersedes the "no signal for either indicator" verdict of earlier revisions. It is still not something to trade on the strength of this document: the non-overlapping median is 0.105, above 5%, and a frequency-matched "trailing 20-day return < −4.84%" filter captures roughly a third of it. What the CMO detects is index mean reversion, well parameterised; exploitability after costs, and behaviour on other indices, are not tested here.
